@@ -9,7 +9,7 @@ const BASE_URL = 'https://dev.to'
 
 const puppeteerOptions = {
   args: ['--lang=ja,en-US,en', '--no-sandbox', '--disable-setuid-sandbox'],
-  headless: true,
+  headless: false,
   //userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.64 Safari/537.36",
 }
 
@@ -26,7 +26,7 @@ class Crawler {
   async init() {
     await this.initializeBrowser()
     await this.getItems()
-    await this.browser.close()
+    //await this.browser.close()
   }
 
   async initializeBrowser() {
@@ -76,6 +76,7 @@ class Crawler {
 
   async getItems() {
     await this.movePage(`${BASE_URL}`)
+
     const newsItems = await this.page.$$('.crayons-story__title')
 
     log(`get newsItems ${newsItems.length}`)
