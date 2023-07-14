@@ -26,7 +26,7 @@ class Crawler {
   async init() {
     await this.initializeBrowser()
     await this.getItems()
-    //await this.browser.close()
+    await this.browser.close()
   }
 
   async initializeBrowser() {
